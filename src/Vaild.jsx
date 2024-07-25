@@ -11,15 +11,19 @@ const Vaild = () => {
       .required("username must be least 3 charater"),
     email: Yup.string()
       .email("enter a vaild address")
+      .matches(
+        "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$",
+        "regex"
+      )
       .required("enter emial address"),
     password: Yup.string()
-      .min(6)
+      .min(8)
       .max(10)
       .matches(
         "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$",
         "regex"
       )
-      .required("password must be least 6 charater"),
+      .required("password must be least 8 charater"),
   });
   let formdata = useFormik({
     initialValues: {
@@ -38,7 +42,7 @@ const Vaild = () => {
   return (
     <div>
       <form className="box w-50" onSubmit={formdata.handleSubmit}>
-        <h2>sign up!!</h2>
+        <h2>VALIDATION-FORM</h2>
         <div className="mb-3">
           <label for="name" className="form-label">
             Name
