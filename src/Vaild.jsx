@@ -2,6 +2,7 @@ import { useFormik } from "formik";
 import React from "react";
 import * as Yup from "yup";
 
+
 const Vaild = () => {
   const uservaildationschema = Yup.object().shape({
     name: Yup.string()
@@ -35,11 +36,11 @@ const Vaild = () => {
   });
 
   return (
-    <div >
-         <form className="box w-50" onSubmit={formdata.handleSubmit}>
-          <h2>sign up!!</h2>
-        <div class="mb-3">
-          <label for="name" class="form-label">
+    <div>
+      <form className="box w-50" onSubmit={formdata.handleSubmit}>
+        <h2>sign up!!</h2>
+        <div className="mb-3">
+          <label for="name" className="form-label">
             Name
           </label>
           <input
@@ -48,13 +49,14 @@ const Vaild = () => {
             value={formdata.values.name}
             onChange={formdata.handleChange}
             onBlur={formdata.handleBlur}
-            class="form-control"
+            className={`form-control ${
+              formdata.touched.name && formdata.errors.name ?"error" :null}`}
             id="name"
             aria-describedby="name"
           />
-           {formdata.touched.name && formdata.errors.name ? (
-          <p style={{ color: "red" }}>{formdata.errors.name}</p>
-        ) : null}
+          {formdata.touched.name && formdata.errors.name ? (
+            <p style={{ color: "red" }}>{formdata.errors.name}</p>
+          ) : null}
         </div>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">
@@ -66,30 +68,31 @@ const Vaild = () => {
             value={formdata.values.email}
             onChange={formdata.handleChange}
             onBlur={formdata.handleBlur}
-            class="form-control"
+            className={`form-control ${
+              formdata.touched.email && formdata.errors.email ?"error" :null}`}
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
           />
-        {formdata.touched.email && formdata.errors.email ? (
-          <p style={{ color: "red" }}>{formdata.errors.email}</p>
-        ) : null}
+          {formdata.touched.email && formdata.errors.email ? (
+            <p style={{ color: "red" }}>{formdata.errors.email}</p>
+          ) : null}
         </div>
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">
             Password
           </label>
           <input
-            type="password"
+            type="text"
             name="password"
             value={formdata.values.password}
             onChange={formdata.handleChange}
             onBlur={formdata.handleBlur}
-            class="form-control"
-            id="exampleInputPassword1"
+            className={`form-control ${
+              formdata.touched.password && formdata.errors.password ?"error" :null}`}            id="exampleInputPassword1"
           />
           {formdata.touched.password && formdata.errors.password ? (
-          <p style={{ color: "red" }}>{formdata.errors.password}</p>
-        ) : null}
+            <p style={{ color: "red" }}>{formdata.errors.password}</p>
+          ) : null}
         </div>
         <button type="submit" class="btn btn-primary">
           Submit
