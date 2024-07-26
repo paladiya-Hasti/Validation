@@ -12,7 +12,7 @@ const Vaild = () => {
     email: Yup.string()
       .email("enter a vaild address")
       .matches(
-        "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$",
+        "[a-z0-9]+@[a-z]+\.[a-z]{2,3}",
         "regex"
       )
       .required("enter emial address"),
@@ -20,7 +20,7 @@ const Vaild = () => {
       .min(8)
       .max(10)
       .matches(
-        "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$",
+        "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,16}$",
         "regex"
       )
       .required("password must be least 8 charater"),
@@ -34,6 +34,10 @@ const Vaild = () => {
     validationSchema: uservaildationschema,
     onSubmit: (value) => {
       console.log(value);
+      alert("success")
+      
+        
+     
     },
     validateOnChange: true,
     validateOnBlur: true,
@@ -41,6 +45,7 @@ const Vaild = () => {
 
   return (
     <div>
+        
       <form className="box w-50" onSubmit={formdata.handleSubmit}>
         <h2>VALIDATION-FORM</h2>
         <div className="mb-3">
